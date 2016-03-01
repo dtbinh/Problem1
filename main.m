@@ -2,13 +2,13 @@ clear variables
 
 %% PARAMETERS:
 %number of agents
-N=3;
+N=2;
 %dimension
 d=2;
 %final time
 T=1;
 %mesh length
-n=20;
+n=10;
 %mesh size
 h=T/(n-1);
 %mesh
@@ -37,14 +37,15 @@ hold all
 
 
 
+
 %% SOLVE  EQUATION
-sol = EulerMethod(x0, w, N, d, n, h);
-
-
+%sol =    EulerMethod(x0, w, N, d, n, h);
+sol = BackEulerMethod(x0, w, N, d, n, h);
 
 
 
 %% PLOT TRAJECTORIES
+%figure
 for i=1:N
     plot(reshape(sol(i,1,:), n, 1), reshape(sol(i,2,:), n, 1));
     hold all
