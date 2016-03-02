@@ -10,7 +10,7 @@ for i = 1:N
         end
     end
     res(i, :) = x(i,:).*temp;
-    %res(i, :) = temp;
+    
 end
 
 end

@@ -8,7 +8,7 @@ function res = Gf2(x, w, N, d)
                         res(:, :, i, j) =  diag(w(i, j)*x(i, :));
                     end
                 end
-               %% dFi/dxi
+             %% dFi/dxi
                temp = zeros(1, d);
                for j = 1: N
                    if i~=j

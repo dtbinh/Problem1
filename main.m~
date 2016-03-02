@@ -2,13 +2,13 @@ clear variables
 
 %% PARAMETERS:
 %number of agents
-N=10;
+N=3;
 %dimension
 d=2;
 %final time
-T=0.5;
+T=1;
 %mesh length
-n=100;
+n=10;
 %mesh size
 h=T/(n-1);
 %mesh
@@ -20,7 +20,7 @@ w = define_w(N);
 %% INITIAL CONDITION 
 x0 = zeros(N, d);
 % N points evenly spaced on a circle of radius r
-r = 5;
+r = 10;
 [x1, x2] = Init(N, r);
 x0(:, 1) = x1;
 x0(:, 2) = x2;
@@ -36,12 +36,12 @@ hold all
 
 
 
+
+
 %% SOLVE  EQUATION
 %sol =    EulerMethod(x0, w, N, d, n, h);
 sol = BackEulerMethod(x0, w, N, d, n, h);
-%[t, sol] = MATLABsolver(x0, w, T, N, d);
-
-
+%[t, sol] = call_osc(x0, T, N, d);
 
 
 
@@ -54,17 +54,8 @@ for i=1:N
     hold all
 end
 
-%% PLOT shift 1 against ime
-figure
-nn = length(sol(1,1,:));
-%nn=n;
-for i=1:N
-    plot(t, reshape(sol(i,1,:), nn, 1));
-    hold all
-end
-
-%% PLOT shift 2 against ime
-figure
+%% PLOT shift against ime
+%figure
 nn = length(sol(1,1,:));
 %nn=n;
 for i=1:N
